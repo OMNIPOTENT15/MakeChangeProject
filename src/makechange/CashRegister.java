@@ -10,17 +10,17 @@ public class CashRegister {
 
 	public static void startRegister() {
 
-		System.out.println("Welcome to the Cash Register!\n\t");
+		System.out.println("/////////          Welcome to the Cash Register!          ////////////\n\n\t");
 		System.out.println(" \tYou will first enter the price of the item and then\n\n\t"
-				+ "enter the amount you want to pay. Your change will then be calculated\n\n\t"
-				+ "and returned to you. ");
+				+ "enter the amount you want to pay. Your change will then be \n\n\t"
+				+ "calculated and returned to you.\n\n\n" + "/////////         					  ////////////\n\n\t");
 
 		double min = 0;
 		double max = 999999999;
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println();
-		System.out.println("Please enter price of the item in dollars and cents: ");
+		System.out.println("\tPlease enter the price of the item in dollars and cents: ");
 		double price = sc.nextDouble();
 		if (price > min && price < max) {
 			System.out.println("You owe the cashier ");
@@ -32,7 +32,7 @@ public class CashRegister {
 
 		}
 
-		System.out.println("Please enter the amount you tender to the cashier in dollars and cents: ");
+		System.out.println("\tPlease enter the amount you tender to the cashier in dollars and cents: ");
 		double money = sc.nextDouble();
 		if (money > min && money < max) {
 			System.out.println();
@@ -41,17 +41,17 @@ public class CashRegister {
 			// System.out.printf("%.2f.", money);
 			System.out.println("\n\n");
 		} else {
-			System.err.println("\n\nPlease enter a amount given in dollars and cents: ");
+			System.err.println("\n\nPlease enter a amount you give in dollars and cents: ");
 			startRegister();
 
 		}
 
 		double change = money - price;
 		if (money < price) {
-			System.err.println("Please give the cashier more money for the item.\n");
+			System.err.println("Please give the cashier more money for this item.\n");
 			startRegister();
 		} else {
-			System.out.print("The amount of change returned to you by the cashier is ");
+			System.out.print("\tThe amount of change returned to you by the cashier is ");
 			System.out.printf("%.2f.", change);
 			System.out.print(" \n");
 			System.out.println();
@@ -179,20 +179,22 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change < 0.05 && change > 0.00) {
-				if (change >= 0.02) {
+			} else if (change >= penny && change < 0.049999999) {
+				if (change > 0.011111111111 && change < 0.049999999) {
 					double c = (change * 100.00);
 					float p = (float) c;
-					System.out.println("You receive " + (int) p + " pennys.");
+					System.out.println("You receive " + (int) p + " pennies.");
+					//i = 0;
 					continueRegister();
 
 				}
-				if (change < 0.02 && change > 0) {
+				if (change < 0.019 && change > 0.00000000000001 && change < nickel) {
 					change = change - penny;
 					System.out.println("You receive 1 penny.");
+					//i = 0;
 					continueRegister();
 				}
-			} else if (change == 0.00) {
+			} else {
 				continueRegister();
 			}
 
@@ -205,14 +207,13 @@ public class CashRegister {
 		int a = 1;
 		Scanner sb = new Scanner(System.in);
 		while (a == 1) {
-			System.out.println("\nWould you like to shop again? Please enter 1 for YES. Press 2 for NO: ");
+			System.out.println("\n\tWould you like to shop again? Please enter 1 for YES. Press 2 for NO: \n\n");
 			a = sb.nextInt();
 			switch (a) {
 			case 1:
 				startRegister();
 				break;
 			case 2:
-
 				endRegister();
 				break;
 			default:
@@ -222,6 +223,7 @@ public class CashRegister {
 	}
 
 	public static void endRegister() {
-		System.out.println("/////////      Thank you and come again!        /////////////");
+		System.out.println("\n\n//////////            Thank you and come again!          /////////////\n\n\n");
+		continueRegister();
 	}
 }

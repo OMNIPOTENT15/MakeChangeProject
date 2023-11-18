@@ -179,17 +179,20 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change <= 0.04 && change >= 0.00) {
-				double convert = change * 100.00;
-				if (convert >= 2.00) {
-					System.out.println("You receive " + (int) convert + " pennys.");
-					continueRegister();
-				} else {
-					System.out.println("You receive 1 penny.");
+			} else if (change < 0.05 && change > 0.00) {
+				if (change >= 0.02) {
+					double c = (change * 100.00);
+					float p = (float) c;
+					System.out.println("You receive " + (int) p + " pennys.");
 					continueRegister();
 
 				}
-			} else {
+				if (change < 0.02 && change > 0) {
+					change = change - penny;
+					System.out.println("You receive 1 penny.");
+					continueRegister();
+				}
+			} else if (change == 0.00) {
 				continueRegister();
 			}
 
@@ -199,15 +202,26 @@ public class CashRegister {
 
 	public static void continueRegister() {
 
+		int a = 1;
 		Scanner sb = new Scanner(System.in);
-		System.out.println("\nWould you like to shop again? Please enter 1 for YES. Press 2 for QUIT: ");
-		int a = sb.nextInt();
-		switch (a) {
-		case 1:
-			startRegister();
-		case 2:
-			break;
+		while (a == 1) {
+			System.out.println("\nWould you like to shop again? Please enter 1 for YES. Press 2 for NO: ");
+			a = sb.nextInt();
+			switch (a) {
+			case 1:
+				startRegister();
+				break;
+			case 2:
+
+				endRegister();
+				break;
+			default:
+				break;
+			}
 		}
-		sb.close();
+	}
+
+	public static void endRegister() {
+		System.out.println("/////////      Thank you and come again!        /////////////");
 	}
 }

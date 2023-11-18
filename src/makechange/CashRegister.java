@@ -8,14 +8,26 @@ public class CashRegister {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("What is the total price of the item in dollars and cents: ");
-		double total = sc.nextDouble();
+		double price = sc.nextDouble();
 		
 		System.out.println("Please enter the amount given the to the cashier in dollars and cents: ");
-		double amount = sc.nextDouble();
+		double money = sc.nextDouble();
 		sc.close();
 		
-		double change = amount - total;
-		System.out.println("The amount of change given is " + change + ".");
+		
+		double change = money - price;
+		if (money < price) {
+			System.err.print("Please provide more money than the price of the item");
+		}
+		else if (change > 1.00) {
+			System.out.print("The amount of changed return is : ");
+			System.out.printf("%.2f.", change);
+
+		} 
+		else {
+			System.out.print("The amount of changed return is : ");
+			System.out.printf("%.2f.", change);
+		}
 	}
 
 }

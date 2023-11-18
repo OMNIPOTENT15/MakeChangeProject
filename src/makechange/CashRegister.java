@@ -5,24 +5,56 @@ import java.util.Scanner;
 public class CashRegister {
 
 	public static void main(String[] args) {
+		startRegister();
+	}
 
-		System.out.println("Welcome to the Cash Register!");
+	public static void startRegister() {
+
+		System.out.println("Welcome to the Cash Register!\n\t");
+		System.out.println(" \tYou will first enter the price of the item and then\n\n\t"
+				+ "enter the amount you would like to pay. Your change with then be calculated\n\n\t"
+				+ "and return to you. Enjoy!");
+
+		double min = 0;
+		double max = 999999999;
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("What is the total price of the item in dollars and cents? ");
+		System.out.println();
+		System.out.println("Please enter price of the item in dollars and cents: ");
 		double price = sc.nextDouble();
+		if (price > min && price < max) {
+			System.out.print("You owe the cashier ");
+			System.out.printf("%.2f.", price);
+			System.out.println("\n");
+		} else {
+			System.err.print("Please enter a valid price in dollars and cents.");
+			startRegister();
 
-		System.out.println("Please enter the amount tendered to the cashier in dollars and cents : ");
+		}
+
+		System.out.println("Please enter the amount you tender to the cashier in dollars and cents: ");
 		double money = sc.nextDouble();
-		sc.close();
+		if (money > min && money < max) {
+			System.out.printf("%.2f ", money);
+			System.out.println("was paid to the cashier.");
+			// System.out.printf("%.2f.", money);
+			System.out.println("\n\n");
+		} else {
+			System.err.println("\n\nPlease enter a amount given in dollars and cents: ");
+			startRegister();
+
+		}
+		// sc.close();
 
 		double change = money - price;
 		if (money < price) {
-			System.err.print("Please provide more money than the price of the item.");
+			System.err.println("Please give the cashier more money than the price of the item.\n");
+			startRegister();
 		} else {
-			System.out.print("The amount of change returned to you by the cashier is : ");
+			System.out.print("The amount of change returned to you by the cashier is ");
 			System.out.printf("%.2f.", change);
-			System.out.print(" ");
+			System.out.print(" \n");
+			System.out.println();
 			System.out.println();
 
 		}
@@ -36,102 +68,143 @@ public class CashRegister {
 		double dime = 0.10;
 		double nickel = 0.05;
 		double penny = 0.01;
+		int i = 0;
 
 		while (change >= 0) {
 			if (change >= hundred) {
 				change = change - hundred;
-				int i = 0;
-				if (i == 1) {
-					System.out.println("You receive 1 hundred dollar bill.");
+				int d = i + 1;
+				if (change < hundred) {
+					if (d != 1) {
+						System.out.println("You receive " + d + " hundred dollar bills.");
+					} else {
+						System.out.println("You receive " + d + " hundred dollar bill.");
+					}
+					i = 0;
 				} else {
 					i++;
 				}
-				System.out.println("You receive " + i + " hundred dollar bills.");
-			}
-
-			else if (change >= twenty) {
+			} else if (change >= twenty) {
 				change = change - twenty;
-				int i = 0;
-				if (i == 1) {
-					System.out.println("You receive 1 twenty dollar bill.");
+				int d = i + 1;
+				if (change < twenty) {
+					if (d != 1) {
+						System.out.println("You receive " + d + " twenty dollar bills.");
+					} else {
+						System.out.println("You receive " + d + " twenty dollar bill.");
+					}
+					i = 0;
 				} else {
 					i++;
 				}
-				System.out.println("You receive " + i + " twenty dollar bills.");
-			}
-
-			else if (change >= ten) {
+			} else if (change >= ten) {
 				change = change - ten;
-				int i = 0;
-				if (i == 1) {
-					System.out.println("You receive 1 ten dollar bill.");
+				int d = i + 1;
+				if (change < ten) {
+					if (d != 1) {
+						System.out.println("You receive " + d + " ten dollar bills.");
+					} else {
+						System.out.println("You receive " + d + " ten dollar bill.");
+					}
+					i = 0;
 				} else {
 					i++;
 				}
-				System.out.println("You receive " + i + " ten dollar bills.");
 
 			} else if (change >= five) {
 				change = change - five;
-				int i = 0;
-				if (i == 1) {
-					System.out.println("You receive 1 five dollar bill.");
+				int d = i + 1;
+				if (change < five) {
+					if (d != 1) {
+						System.out.println("You receive " + d + " five dollar bills.");
+					} else {
+						System.out.println("You receive " + d + " five dollar bill.");
+					}
+					i = 0;
 				} else {
 					i++;
 				}
-				System.out.println("You receive " + i + " five dollar bills.");
 
 			} else if (change >= one) {
 				change = change - one;
-				int i = 0;
-				if (i == 1) {
-					System.out.println("You receive 1 one dollar bill.");
+				int d = i + 1;
+				if (change < one) {
+					if (d != 1) {
+						System.out.println("You receive " + d + " one dollar bills.");
+					} else {
+						System.out.println("You receive " + d + " one dollar bill.");
+					}
+					i = 0;
 				} else {
 					i++;
 				}
-				System.out.println("You receive " + i + " one dollar bills.");
 
 			} else if (change >= quarter) {
 				change = change - quarter;
-				int i = 0;
-				if (i == 1) {
-					System.out.println("You receive 1 one quarter.");
+				int d = i + 1;
+				if (change < quarter) {
+					if (d != 1) {
+						System.out.println("You receive " + d + " quarters.");
+					} else {
+						System.out.println("You receive " + d + " quarter.");
+					}
+					i = 0;
 				} else {
 					i++;
 				}
-				System.out.println("You receive " + i + " one quarters.");
 			} else if (change >= dime) {
 				change = change - dime;
-				int i = 0;
-				if (i == 1) {
-					System.out.println("You receive 1 one dime.");
+				int d = i + 1;
+				if (change < dime) {
+					if (d != 1) {
+						System.out.println("You receive " + d + " dimes.");
+					} else {
+						System.out.println("You receive " + d + " dime.");
+					}
+					i = 0;
 				} else {
 					i++;
 				}
-				System.out.println("You receive " + i + " one dimes.");
 
 			} else if (change >= nickel) {
 				change = change - nickel;
-				int i = 0;
-				if (i == 1) {
-					System.out.println("You receive 1 one nickel.");
+				int d = i + 1;
+				if (change < nickel) {
+					if (d != 1) {
+						System.out.println("You receive " + d + " nickels.");
+					} else {
+						System.out.println("You receive " + d + " nickel.");
+					}
+					i = 0;
 				} else {
 					i++;
 				}
-				System.out.println("You receive " + i + " one nickel.");
-			} else if (change >= penny) {
-				change = change - penny;
-				int i = 0;
-				if (i == 1) {
-					System.out.println("You receive 1 one penny.");
+			} else if (change > 0) {
+				if (change == 0.01) {
+					System.out.println("You receive 1 penny.");
 				} else {
-					i++;
+					int d = i + 1;
+					change = change - penny;
+					if (change == 0) {
+						System.out.println("You receive + " + d + " penny.");
+					}
 				}
-				System.out.println("You receive " + i + " one pennys.");
+				i = 0;
 			} else {
-				System.out.println("Thank you and have a nice day!");
+				i++;
+			} 
+		} else {
+			System.out.println("\nWould you like to shop again? Please enter 1 for YES and 2 for NO.");
+			Scanner sb = new Scanner(System.in);
+			int a = sb.nextInt();
+			if (a == 1) {
+				startRegister();
+			} else if (a == 2) {
+				System.out.println("\nThank you and come again!");
 				break;
+			} else {
+				System.err.print("\nInvalid Option.\n");
+				startRegister();
 			}
 
 		}
-	}
-}

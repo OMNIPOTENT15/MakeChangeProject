@@ -165,7 +165,6 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-
 			} else if (change >= nickel) {
 				change = change - nickel;
 				int d = i + 1;
@@ -179,28 +178,36 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= penny && change < 0.049999999) {
-				if (change > 0.011111111111 && change < 0.049999999) {
-					double c = (change * 100.00);
-					float p = (float) c;
-					System.out.println("You receive " + (int) p + " pennies.");
-					//i = 0;
-					continueRegister();
-
-				}
-				if (change < 0.019 && change > 0.00000000000001 && change < nickel) {
-					change = change - penny;
-					System.out.println("You receive 1 penny.");
-					//i = 0;
-					continueRegister();
+			} else if (change >= 0.0000000001) {
+				change = change - penny;
+				int d = i + 1;
+				if (change < penny) {
+					if (d != 1) {
+						System.out.println("You receive " + d + " pennies.");
+					} else {
+						System.out.println("You receive " + d + " penny.");
+					}
+					i = 0;
+				} else {
+					i++;
 				}
 			} else {
+
 				continueRegister();
 			}
-
+			//sc.close();
 		}
-		sc.close();
+		// double c = (change * 100.00);
+		// float p = (float) c;
+		// System.out.println("You receive " + d + " pennies.");
+		// change = change - penny;
+		// continueRegister();
+		// } else {
+		// System.out.println("You receive 1 penny.");
+		// continueRegister();
 	}
+
+	// sc.close();
 
 	public static void continueRegister() {
 

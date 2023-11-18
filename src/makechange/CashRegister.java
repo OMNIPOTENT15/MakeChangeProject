@@ -84,7 +84,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= twenty) {
+			} else if (change >= twenty && change < hundred) {
 				change = change - twenty;
 				int d = i + 1;
 				if (change < twenty) {
@@ -97,7 +97,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= ten) {
+			} else if (change >= ten && change < twenty) {
 				change = change - ten;
 				int d = i + 1;
 				if (change < ten) {
@@ -111,7 +111,7 @@ public class CashRegister {
 					i++;
 				}
 
-			} else if (change >= five) {
+			} else if (change >= five && change < ten) {
 				change = change - five;
 				int d = i + 1;
 				if (change < five) {
@@ -125,7 +125,7 @@ public class CashRegister {
 					i++;
 				}
 
-			} else if (change >= one) {
+			} else if (change >= one && change < five) {
 				change = change - one;
 				int d = i + 1;
 				if (change < one) {
@@ -139,7 +139,7 @@ public class CashRegister {
 					i++;
 				}
 
-			} else if (change >= quarter) {
+			} else if (change >= quarter && change < one) {
 				change = change - quarter;
 				int d = i + 1;
 				if (change < quarter) {
@@ -152,7 +152,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= dime) {
+			} else if (change > 0.099999999 && change < quarter) {
 				change = change - dime;
 				int d = i + 1;
 				if (change < dime) {
@@ -165,7 +165,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= nickel) {
+			} else if (change > 0.0499999999 && change < 0.0999999999999) {
 				change = change - nickel;
 				int d = i + 1;
 				if (change < nickel) {
@@ -178,25 +178,25 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= 0.0000000001) {
+			} else if (change > 0.00000000001 && change < 0.04999999999999) {
 				change = change - penny;
 				int d = i + 1;
 				if (change < penny) {
 					if (d != 1) {
 						System.out.println("You receive " + d + " pennies.");
 					} else {
-						System.out.println("You receive " + d + " penny.");
+						System.out.println("You receive 1 penny.");
 					}
 					i = 0;
 				} else {
 					i++;
 				}
 			} else {
-
 				continueRegister();
 			}
-			//sc.close();
 		}
+		// sc.close();
+
 		// double c = (change * 100.00);
 		// float p = (float) c;
 		// System.out.println("You receive " + d + " pennies.");

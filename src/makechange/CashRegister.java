@@ -152,7 +152,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change > 0.099999999 && change < quarter) {
+			} else if (change >= 0.099999999 && change < quarter) {
 				change = change - dime;
 				int d = i + 1;
 				if (change < dime) {
@@ -165,7 +165,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change > 0.0499999999 && change < 0.0999999999999) {
+			} else if (change >= 0.0499999999 && change <= 0.0999999999999) {
 				change = change - nickel;
 				int d = i + 1;
 				if (change < nickel) {
@@ -178,7 +178,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change > 0.00000000001 && change < 0.04999999999999) {
+			} else if (change >= 0.00000001 && change <= 0.04999999999999) {
 				change = change - penny;
 				int d = i + 1;
 				if (change < penny) {
@@ -186,14 +186,19 @@ public class CashRegister {
 						System.out.println("You receive " + d + " pennies.");
 					} else {
 						System.out.println("You receive 1 penny.");
+						continueRegister();
 					}
 					i = 0;
 				} else {
 					i++;
 				}
-			} else {
+			} else if (change == 0 || change < 0.00000001){
 				continueRegister();
 			}
+			else {
+				continueRegister();
+			}
+			
 		}
 		// sc.close();
 

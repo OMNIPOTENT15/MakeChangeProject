@@ -71,7 +71,7 @@ public class CashRegister {
 		int i = 0;
 
 		while (change >= 0) {
-			if (change >= hundred) {
+			if (change > 99.99999999999999999) {
 				change = change - hundred;
 				int d = i + 1;
 				if (change < hundred) {
@@ -84,7 +84,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= twenty) {
+			} else if (change >= 19.9999999999999) {
 				change = change - twenty;
 				int d = i + 1;
 				if (change < twenty) {
@@ -97,7 +97,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= ten) {
+			} else if (change >= 9.9999999999999999) {
 				change = change - ten;
 				int d = i + 1;
 				if (change < ten) {
@@ -111,7 +111,7 @@ public class CashRegister {
 					i++;
 				}
 
-			} else if (change >= five) {
+			} else if (change >= 4.9999999999999999) {
 				change = change - five;
 				int d = i + 1;
 				if (change < five) {
@@ -125,7 +125,7 @@ public class CashRegister {
 					i++;
 				}
 
-			} else if (change >= one) {
+			} else if (change >= 0.999999999999999) {
 				change = change - one;
 				int d = i + 1;
 				if (change < one) {
@@ -139,7 +139,7 @@ public class CashRegister {
 					i++;
 				}
 
-			} else if (change >= quarter) {
+			} else if (change >= 0.249999999999999999999) {
 				change = change - quarter;
 				int d = i + 1;
 				if (change < quarter) {
@@ -152,7 +152,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= dime) {
+			} else if (change >= 0.0999999999999999999) {
 				change = change - dime;
 				int d = i + 1;
 				if (change < dime) {
@@ -165,7 +165,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= nickel) {
+			} else if (change >= 0.04999999999999999999) {
 				change = change - nickel;
 				int d = i + 1;
 				if (change < nickel) {
@@ -178,13 +178,12 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= 0.01 && change < nickel) {
+			} else if (change >= 0.0099999999999999999999 && change < nickel) {
 				double c = (change * 100.00);
 				float p = (float) c;
 				System.out.println("You receive " + (int) p + " penny(s).");
 				continueRegister();
-			} else if (change == 0.00) {
-				System.out.println("You gave the exact amount. Thanks!   :) \n");
+			} else if (change <= 0.0000000000000000000001) {
 				continueRegister();
 			} else {
 				continueRegister();

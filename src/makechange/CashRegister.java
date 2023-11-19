@@ -15,8 +15,8 @@ public class CashRegister {
 				+ "enter the amount you want to pay. Your change will then be \n\n\t"
 				+ "calculated and returned to you.\n\n\n" + "/////////         					  ////////////\n\n\t");
 
-		double min = 0;
-		double max = 999999999;
+		double min = 0.00;
+		double max = 9999.99;
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println();
@@ -48,7 +48,7 @@ public class CashRegister {
 
 		double change = money - price;
 		if (money < price) {
-			System.err.println("Please give the cashier more money for this item.\n");
+			System.err.println("Please give the cashier more money than that...\n");
 			startRegister();
 		} else {
 			System.out.print("\tThe amount of change returned to you by the cashier is ");
@@ -84,7 +84,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= twenty && change < hundred) {
+			} else if (change >= twenty) {
 				change = change - twenty;
 				int d = i + 1;
 				if (change < twenty) {
@@ -97,7 +97,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= ten && change < twenty) {
+			} else if (change >= ten) {
 				change = change - ten;
 				int d = i + 1;
 				if (change < ten) {
@@ -111,7 +111,7 @@ public class CashRegister {
 					i++;
 				}
 
-			} else if (change >= five && change < ten) {
+			} else if (change >= five) {
 				change = change - five;
 				int d = i + 1;
 				if (change < five) {
@@ -125,7 +125,7 @@ public class CashRegister {
 					i++;
 				}
 
-			} else if (change >= one && change < five) {
+			} else if (change >= one) {
 				change = change - one;
 				int d = i + 1;
 				if (change < one) {
@@ -139,7 +139,7 @@ public class CashRegister {
 					i++;
 				}
 
-			} else if (change >= quarter && change < one) {
+			} else if (change >= quarter) {
 				change = change - quarter;
 				int d = i + 1;
 				if (change < quarter) {
@@ -152,7 +152,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= 0.099999999 && change < quarter) {
+			} else if (change >= dime) {
 				change = change - dime;
 				int d = i + 1;
 				if (change < dime) {
@@ -165,7 +165,7 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= 0.0499999999 && change <= 0.0999999999999) {
+			} else if (change >= nickel) {
 				change = change - nickel;
 				int d = i + 1;
 				if (change < nickel) {
@@ -178,48 +178,27 @@ public class CashRegister {
 				} else {
 					i++;
 				}
-			} else if (change >= 0.00000001 && change <= 0.04999999999999) {
-				change = change - penny;
-				int d = i + 1;
-				if (change < penny) {
-					if (d != 1) {
-						System.out.println("You receive " + d + " pennies.");
-					} else {
-						System.out.println("You receive 1 penny.");
-						continueRegister();
-					}
-					i = 0;
-				} else {
-					i++;
-				}
-			} else if (change == 0 || change < 0.00000001){
+			} else if (change >= 0.01 && change < nickel) {
+				double c = (change * 100.00);
+				float p = (float) c;
+				System.out.println("You receive " + (int) p + " penny(s).");
 				continueRegister();
-			}
-			else {
+			} else if (change == 0.00) {
+				System.out.println("You gave the exact amount. Thanks!   :) \n");
 				continueRegister();
+			} else {
+				continueRegister();
+
 			}
-			
 		}
-		// sc.close();
-
-		// double c = (change * 100.00);
-		// float p = (float) c;
-		// System.out.println("You receive " + d + " pennies.");
-		// change = change - penny;
-		// continueRegister();
-		// } else {
-		// System.out.println("You receive 1 penny.");
-		// continueRegister();
 	}
-
-	// sc.close();
 
 	public static void continueRegister() {
 
 		int a = 1;
 		Scanner sb = new Scanner(System.in);
 		while (a == 1) {
-			System.out.println("\n\tWould you like to shop again? Please enter 1 for YES. Press 2 for NO: \n\n");
+			System.out.println("\n\n\tWould you like to shop again? Please enter 1 for YES. Press 2 for NO: \n\n");
 			a = sb.nextInt();
 			switch (a) {
 			case 1:

@@ -16,7 +16,7 @@ public class CashRegister {
 				+ "calculated and returned to you.\n\n\n" + "/////////         					  ////////////\n\n\t");
 
 		double min = 0.00;
-		double max = 9999.99;
+		double max = 99999999999.99;
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println();
@@ -71,7 +71,10 @@ public class CashRegister {
 		int i = 0;
 
 		while (change >= 0) {
-			if (change > 99.99999999999999999) {
+			if (change == 0.00000000000000000000) {
+				System.out.println("You gave the exact amount. Thank you! ");
+				continueRegister();
+			} else if (change > 99.99999999999999999) {
 				change = change - hundred;
 				int d = i + 1;
 				if (change < hundred) {
@@ -183,7 +186,7 @@ public class CashRegister {
 				float p = (float) c;
 				System.out.println("You receive " + (int) p + " penny(s).");
 				continueRegister();
-			} else if (change <= 0.0000000000000000000001) {
+			} else if (change < 0.0000000000000000000001) {
 				continueRegister();
 			} else {
 				continueRegister();
